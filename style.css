@@ -1,28 +1,39 @@
 body {
 	margin: 0;
 	padding: 0;
-	bacground-color: #65350F;
+	background-color: #65350F;
 	background-image: url("doms.jpg");
 	background-size: 300px 100px;
 	text-align: center;
+	/* Sent bdy font size */
+	font-size: 20px;
 }
 
 ul {
 	list-style-type: none;
 	padding-left: 0;
 }
+
+/* Add some space between elements */
+ul li {
+	padding: 5px;
+}
+
 header {
 	font-family: Courgette, cursive;
 	font-size: 0.75em;
 }
+
 .swerve {
 	max-width: 700px;
 	margin: 0 auto;
 }
+
 #date {
 	font-size: 15px;
 	text-align: center;
 }
+
 section {
 	max-width: 50%;
 	text-align: left;
@@ -30,28 +41,28 @@ section {
 	padding-left: 25%;
 	font-family: 'Playfair Display', sans-serif;
 	font-weight: 600;
-	font-size: 60%;
+	/* Increased font-size from 60 to 70% */
+	font-size: 70%;
 	opacity: 0.9;
 }
+
 input {
 	padding: 10px 20px 10px 20px;
 	border-radius: 2px;
 	border: none;
-	box-shadow: -webkit-box-shadow: 4px 6px 23px -2px rgba(17,28,187,0.8);
-				-moz-box-shadow: 4px 6px 23px -2px rgba(17,28,187,0.8);
-				box-shadow: 4px 6px 23px -2px rgba(17,28,187,0.8);
+	box-shadow: 4px 6px 23px -2px rgba(17, 28, 187, 0.8);
 }
+
 button {
 	background-color: rgba(185, 235, 200, 0.7);
 	margin: 3px;
 	padding: 10px;
 	border-radius: 2px;
 	border: none;
-	box-shadow: -webkit-box-shadow: 4px 6px 23px -2px rgba(17,28,187,0.8);
-				-moz-box-shadow: 4px 6px 23px -2px rgba(17,28,187,0.8);
-				box-shadow: 4px 6px 23px -2px rgba(17,28,187,0.8);
+	box-shadow: 4px 6px 23px -2px rgba(17, 28, 187, 0.8);
 
 }
+
 button:hover {
 	cursor: pointer;
 }
@@ -86,6 +97,10 @@ li {
 .brisk {
 	display: flex;
 }
+
+.brisk i {
+	cursor: pointer;
+} 
 
 .de-swerve {
 	display: flex;
