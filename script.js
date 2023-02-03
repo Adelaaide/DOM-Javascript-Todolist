@@ -6,61 +6,65 @@ const deleteButton = document.getElementsByClassName("li");
 var clearButton = document.getElementById("clear");
 
 function strikethrough(e) {
-	if (e.target.tagName === "LI") {
-		e.target.classList.toggle ("done");
-	}
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("done");
+    }
 }
 
 function createDeleteButtonIcon() {
     for (var ind = 0; ind < li.length; ind++) {
         var createDeleteButton = document.createElement("i");
         var createDiv = document.getElementsByClassName("brisk");
-        console.log(createDiv);
         createDeleteButton.classList.add("fa", "fa-trash");
+        // Create Event Listener so the trash icon actually works
+        createDeleteButton.addEventListener('click', deleteNodeOnClick);
         createDiv[ind].appendChild(createDeleteButton);
-}
+    }
 }
 
 function inputValue() {
-return input.value.length;
+    return input.value.length;
 }
 
 const dateDisplay = document.getElementById("date");
 const date = new Date();
 const options = {
-	weekday: "long",
-	year: "numeric",
-	month: "long",
-	day: "numeric"
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
 };
 
 dateDisplay.innerHTML = date.toLocaleDateString("en-Us", options);
 
 function createListElement() {
-var li = document.createElement("li");
-var createBrisk = document.createElement("brisk");
+    // Create Elements
+    var li = document.createElement("li");
+    var briskClassSwerve = document.createElement("div");
+    briskClassSwerve.classList.add("de-swerve");
+    var createBrisk = document.createElement("div");
+    createBrisk.classList.add("brisk");
+    var createDeleteButton = document.createElement("i");
+    createDeleteButton.classList.add("fa", "fa-trash");
+    // Add Event Listener for Delete Button
+    createDeleteButton.addEventListener('click', deleteNodeOnClick);
+    
+    // Append elements
+    createBrisk.appendChild(createDeleteButton);
+    li.appendChild(document.createTextNode(input.value));
+    briskClassSwerve.appendChild(li);
+    briskClassSwerve.appendChild(createBrisk);
+    ul.appendChild(briskClassSwerve);
 
-var briskClassSwerve = document.createElement("brisk");
-briskClassSwerve.classList.add("de-swerve");
-
-li.appendChild(document.createTextNode(input.value));
- briskClassSwerve.appendChild(li);
- briskClassSwerve.appendChild(createBrisk);
- ul.appendChild(briskClassSwerve);
-
-input.value = "";
-createBrisk.classList.add("brisk");
-var createDeleteButton = document.createElement("i");
-createDeleteButton.classList.add("fa", "fa-trash");
-createBrisk.appendChild(createDeleteButton);
-deleteParentNodeOnClick();
+    // Reset Input Value
+    input.value = "";
 }
 
 
 function addListAfterKeypress(event) {
-if (inputValue() > 0 && event.keyCode === 13) {
-createListElement();
-}
+    if (inputValue() > 0 && event.keyCode === 13) {
+        createListElement();
+    }
 }
 
 function addListAfterClick() {
@@ -82,6 +86,9 @@ for (var i = 0; i < deleteButton.length; i++) {
 function clearList() {
     ul.innerHTML = "";
 }
+
+// On Load create trash icons for all items
+createDeleteButtonIcon();
 
 clearButton.addEventListener("click", clearList);
 ul.addEventListener("click", strikethrough);
